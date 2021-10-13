@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimer leprix de votre immobilier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="form-l">
+      <form method="post" action="">
+        <h5 class="hh1">Pour estimer le prix de votre immobilier veuillez remplir les champs suivant:
+            </h5>
+      <div class="form-group">
+        <label for="tplo">Type local </label>
+        <select type="text" name="tplo" class="form-control" id="tplo" required>
+            <option value="" disabled selected>choisissez le Type du local</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="namu">Nature mutation </label>
+        <select type="text" name="namu" class="form-control" id="namu" required>
+            <option value="" disabled selected>choisissez la Nature de mutation</option>
+        </select>
+      </div>
+        <div class="form-group">
+        <label for="copo">Code postal</label>
+        <input type="text" class="form-control" id="copo" placeholder="Code postal" required>
+      </div>
+      <button type="submit" name="submit" class="btn btn-primary">Estimer</button>
+    </form>
+    </div>
+    </div>
+    <div class="col-md-3"></div>
+    </div>
+    </div>
+</body>
+</html>
