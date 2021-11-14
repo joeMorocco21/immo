@@ -4,20 +4,11 @@ from flask import request
 import os
 from .apps import Apps
 app = Flask(__name__, template_folder='templates')
-    # To get one variable, tape app.config['MY_VARIABLE']
+
 class View(Apps):
     @app.route('/')
     def index():
         return render_template('index.html')
-    @app.route('/typeVoie')
-    def typeVoie():
-        return Apps.data()
-    @app.route('/zipCode')
-    def zipCode():
-        return Apps.getZipCode()
-    @app.route('/commune/<zipCode>')
-    def commune(zipCode):
-        return Apps.getCommune(zipCode)
     @app.route('/particulier')
     def particulier():
         return render_template('particular.html')

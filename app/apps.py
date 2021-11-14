@@ -21,8 +21,6 @@ class Apps():
             mu = pd.DataFrame(npy.sort(dfl[col].unique()),columns=m)
             result.append(mu)
         result
-      
-            
         rs = result[0] == tpbs
         rsv = rs.astype(int)
         print(rsv)

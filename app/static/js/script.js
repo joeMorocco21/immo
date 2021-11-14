@@ -1,11 +1,11 @@
 $(function() {
   $('#pro').on('click', function() {
-      window.location='http://127.0.0.1:5000/professionel'
+      window.location='https://immob.azurewebsites.net/professionel'
   });
 })
 $(function() {
   $('#par').on('click', function() {
-      window.location='http://127.0.0.1:5000/particulier'
+      window.location='https://immob.azurewebsites.net/particulier'
   });
 })
 $(function() {
@@ -62,8 +62,7 @@ if(tpb == 1 || tpb == 2){
     mai =1
     ter =0
   }
-$.getJSON('http://127.0.0.1:5000/predict/'+ tpbs +'/' + srb +'/'+ np + '/' + st + '/'+ nd + '/' + app + '/' + loc + '/' + mai + '/' + ter , function(data) {        
-  var select = document.getElementById('tyvoie');
+$.getJSON('https://immob.azurewebsites.net/predict/'+ tpbs +'/' + srb +'/'+ np + '/' + st + '/'+ nd + '/' + app + '/' + loc + '/' + mai + '/' + ter , function(data) {        
   console.log(data)   
   for (var i = 0; i < data.length ; i++)
         {
@@ -76,20 +75,9 @@ $.getJSON('http://127.0.0.1:5000/predict/'+ tpbs +'/' + srb +'/'+ np + '/' + st 
         },5000)
 }});
   }else{
-    $.getJSON('http://127.0.0.1:5000/predict/'+ tpbs +'/' + srb +'/'+ np + '/' + st + '/'+ nd + '/' + app + '/' + loc + '/' + mai + '/' + ter, function(data) {        
-      var select = document.getElementById('tyvoie');
-      console.log(data)   
-      for (var i = 0; i < data.length ; i++)
-            {
-              console.log(`${data[i][0]}`)
-              var op = document.createElement("option")
-              op.setAttribute("id", "typvoie")
-              select.appendChild(op)
-              op.innerHTML=`${data[i][0]}`
-            }
-        });
-      }
-  });
+
+  }
+});
 })
 $(function() {
   $('#etap1').on('click', function() {
@@ -112,3 +100,43 @@ $(function() {
 $('#close').on('click', function() {
   $('#popup').hide()
 })
+
+$('#etap3').on('click', function() {
+
+  let srb = $('#srbati').val();
+  let np = $('#npiece').val();
+  let nd = $('#ndep').val();
+  let st = $('#sutr').val();
+let tpb = $('#typDeBien').val();
+if(tpb == 1 || tpb == 3){
+  if(tpb == 1)
+  {
+    tpbs = "Batiment"
+    app = $('#nApp').val();
+    loc =0
+    mai =0
+    ter =0
+  }else{
+    tpbs = "Lotissement"
+    app =0
+    loc =0
+    mai =$('#nApp').val();
+    ter =0
+  }
+$.getJSON('https://immob.azurewebsites.net/predict/'+ tpbs +'/' + srb +'/'+ np + '/' + st + '/'+ nd + '/' + app + '/' + loc + '/' + mai + '/' + ter, function(data) {        
+  console.log(data)   
+  for (var i = 0; i < data.length ; i++)
+  {
+    console.log(`${data[i][0]}`)
+    var msg = `${data[i][0]}`
+    $('#popup').show();
+    $('#price').html(+msg+" €");
+    setTimeout(function() {
+      $('#gif_wait').hide();
+  },5000)
+        }});
+  }
+
+})
+
+
